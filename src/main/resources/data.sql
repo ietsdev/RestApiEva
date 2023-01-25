@@ -1,0 +1,1 @@
+INSERT INTO USUARIO (name, email, password) VALUES ('Juan Rodriguez', 'juan@rodriguez.org','hunter2');
