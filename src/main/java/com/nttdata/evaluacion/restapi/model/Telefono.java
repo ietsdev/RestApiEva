@@ -1,9 +1,14 @@
 package com.nttdata.evaluacion.restapi.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Telefono")
+@Table(name = "telefono")
 public class Telefono {   
 
     @Id
@@ -16,17 +21,17 @@ public class Telefono {
 	@Column(name = "citycode")
 	private String citycode;
 
-	@Column(name = "contrycode")
-	private String contrycode;
+	@Column(name = "countrycode")
+	private String countrycode;
 
 	public Telefono() {
 
 	}
 
-	public Telefono(Integer number, String citycode, String contrycode) {
+	public Telefono(Integer number, String citycode, String countrycode) {
 		this.number = number;
 		this.citycode = citycode;
-		this.contrycode = contrycode;
+		this.countrycode = countrycode;
 	}
 
 	public long getId() {

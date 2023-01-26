@@ -1,5 +1,13 @@
 package com.nttdata.evaluacion.restapi.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -7,9 +15,14 @@ import jakarta.persistence.*;
 public class Usuario {   
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    @ColumnDefault("random_uuid()")
+    private UUID id;
 
 	@Column(name = "name")
 	private String name;
@@ -20,9 +33,21 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 
-	public int getId() {
-		return id;
+    public String getId() {
+		return id.toString();
 	}
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "usuario_id")
+    private Set<Telefono> phones = new HashSet<>();
+
+    public Set<Telefono> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(Set<Telefono> phones) {
+        this.phones = phones;
+    }
 
     public Usuario() {
 
