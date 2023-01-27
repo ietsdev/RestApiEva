@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nttdata.evaluacion.restapi.model.Usuario;
-import com.nttdata.evaluacion.restapi.repositories.TelefonoRepository;
 import com.nttdata.evaluacion.restapi.representation.Respuesta;
 import com.nttdata.evaluacion.restapi.service.IUsuarioService;
 
@@ -23,9 +22,6 @@ public class UsuarioController {
 
 	@Autowired
     IUsuarioService usuarioService;
-
-	@Autowired
-    TelefonoRepository telefonoRepository;
 
     @GetMapping("/usuarios")
 	public ResponseEntity<List<Usuario>> getUsuarios(@RequestParam(required = false) String email) {
