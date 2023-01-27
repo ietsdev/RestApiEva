@@ -1,10 +1,4 @@
 package com.nttdata.evaluacion.restapi.model;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -54,17 +48,17 @@ public class Telefono {
 		this.citycode = citycode;
 	}
 
-	public String getContrycode() {
-		return contrycode;
+	public String getCountrycode() {
+		return countrycode;
 	}
 
-	public void setContrycode(String contrycode) {
-		this.contrycode = contrycode;
+	public void setCountrycode(String contrycode) {
+		this.countrycode = contrycode;
 	}
 
 	@Override
 	public String toString() {
-		return contrycode + "-" + citycode + "-" + number;
+		return countrycode + "-" + citycode + "-" + number;
 	}
 
 }
