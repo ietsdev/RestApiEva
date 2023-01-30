@@ -1,20 +1,14 @@
 package com.nttdata.evaluacion.restapi.security;
 
 import java.io.Serializable;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -43,7 +37,7 @@ public class JwtTokenUtil implements Serializable {
 	public Date addMinutes(Date fecha, int minutes){
 		Calendar date = Calendar.getInstance();
 		long timeInSecs = date.getTimeInMillis();
-		Date afterAdding10Mins = new Date(timeInSecs + (minutes * 60 * 1000));
-		return afterAdding10Mins;
+		Date afterAddingMins = new Date(timeInSecs + (minutes * 60 * 1000));
+		return afterAddingMins;
 	}
 }

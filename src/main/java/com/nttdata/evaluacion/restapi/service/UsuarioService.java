@@ -81,19 +81,11 @@ public class UsuarioService implements IUsuarioService{
     {
         Pattern pattern = Pattern
         .compile("^[A-Z]{1}[a-z]+[0-9]{2}$");
-        // .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-        //         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         Matcher mather = pattern.matcher(clave);
         return (mather.find() == true);
     }
 
-    // @Override
-    // public UserDetails cargarUsuarioParaToken(Usuario usuario) {
-    //     return new User(usuario.getName(), usuario.getPassword(),
-	// 				new ArrayList<>());
-    // }
-    
 }
 
 
